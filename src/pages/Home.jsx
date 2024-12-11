@@ -20,7 +20,7 @@ export default function Home() {
   }, []);
   console.log(jobs);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate()  
 
   return (
     <>
@@ -28,10 +28,10 @@ export default function Home() {
         <h1>loading...</h1>
       ) : (
         jobs.map((job) => (
-          <div key={job.id}>
+          <div key={job._id}>
             <h2>{job.companyName}</h2>
             <p>{job.jobPosition}</p>
-            <button onClick={()=> navigate(`/editJob/${job.id}`)}>Edit</button>
+            <button onClick={()=> navigate(`/editJob/${job._id}`)}>Edit</button>
           </div>
         ))
       )}
