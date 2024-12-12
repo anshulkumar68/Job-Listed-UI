@@ -41,7 +41,7 @@ export const createJob = (data) =>{
 
 export const updateJob = (id, data) =>{
     return fetch(`${URL}/job/${id}`, {
-        method : 'GET',
+        method : 'PUT',
         headers : {
             'Content-type' : 'application/json',
             'Authorization' : `${localStorage.getItem('token')}`
@@ -53,6 +53,16 @@ export const updateJob = (id, data) =>{
 export const getJobById = (id) =>{
     return fetch(`${URL}/job/${id}`,{
         method : 'GET',
+        headers : {
+            'Content-type' : 'application/json',
+            'Authorization' : `${localStorage.getItem('token')}`
+        },
+    })
+}
+
+export const deleteJob = (id) =>{
+    return fetch(`${URL}/job/${id}`, {
+        method : 'DELETE',
         headers : {
             'Content-type' : 'application/json',
             'Authorization' : `${localStorage.getItem('token')}`
