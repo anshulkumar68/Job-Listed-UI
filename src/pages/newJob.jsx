@@ -37,11 +37,17 @@ const newJob = () => {
 
     const handleCreateJob =async (e) =>{
         e.preventDefault();
-        const res =await createJob(jobFormData)
+        const res =isEdit ? await updateJob(id, jobFormData) : await createJob(jobFormData)
         if(res.status===200){
             const data = await res.json()
-            console.log(data)
-            alert('job created successfully')
+            console.log(data);
+            setJobFormData({
+              companyName : '',
+              jobPosition : '',
+              salary : '',
+              jobType : '',
+            })
+            alert(`job ${isEdit ? 'updated': 'created'} successfully`)
         }
         else if(res.status ===401){
             alert(`login to create job`)
@@ -111,7 +117,7 @@ const newJob = () => {
             <option value="internship">internship</option>
             <option value="freelance">freelance</option>
         </select>
-        <button type="submit">Submit</button>
+        <button type="submit">{isEdit ? 'update' : 'create'}</button>
       </form>
     </div>
   )
