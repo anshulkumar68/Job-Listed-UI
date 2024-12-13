@@ -19,8 +19,8 @@ export const login = (data) =>{
         })
 }
 
-export const getJobs = () =>{
-    return fetch(`${URL}/job`, {
+export const getJobs = ({limit, offset}) =>{
+    return fetch(`${URL}/job?limit=${limit}&offset=${offset}`, {
         method : "GET",
         headers :{
             'Content-type' : 'application/json',
